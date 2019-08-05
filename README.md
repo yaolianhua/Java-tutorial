@@ -1,24 +1,24 @@
 ## IoC 容器
 
 ------------
-[Spring IoC容器和Bean简介](#Spring IoC容器和Bean简介)
+[Spring IoC容器和Bean简介](#Spring-IoC容器和Bean简介)
 
 [配置元数据的三种方式](#配置元数据的三种方式)
 
 [Dependencies](#Dependencies)
-   -  [DI（Dependency Injection）](#DI（Dependency Injection）)
-   -  [Dependencies and Configuration in Detail](#Dependencies and Configuration in Detail)
+   -  [DI（Dependency Injection）](#DI-（Dependency-Injection）)
+   -  [Dependencies and Configuration in Detail](#Dependencies-and-Configuration-in-Detail)
 
-[Bean Scopes](#Bean Scopes)
-   - [singleton scope](#singleton scope)
-   - [prototype scope](#prototype scope)
+[Bean Scopes](#Bean-Scopes)
+   - [singleton scope](#singleton-scope)
+   - [prototype scope](#prototype-scope)
    - [单例bean中依赖原型bean](#单例bean中依赖原型bean)
    - [其他范围](#其他范围)
 
 [自定义bean](#自定义bean)
    - [生命周期回调](#生命周期回调)
-   - [ApplicationContextAware and BeanNameAware](#ApplicationContextAware and BeanNameAware)
-   - [Other Aware Interfaces](#Other Aware Interfaces)
+   - [ApplicationContextAware and BeanNameAware](#ApplicationContextAware-and-BeanNameAware)
+   - [Other Aware Interfaces](#Other-Aware-Interfaces)
 
 [IoC 扩展点](#IoC-扩展点)
    - [BeanPostProcessor](#BeanPostProcessor)
