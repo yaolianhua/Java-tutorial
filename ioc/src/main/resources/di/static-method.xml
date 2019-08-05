@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="exampleBean3" class="cn.yaolianhua.dependencies.di.example.ExampleBean3" factory-method="getInstance">
+        <constructor-arg ref="simpleBean3"/>
+        <constructor-arg name="string" value="2019"/>
+    </bean>
+    <bean id="simpleBean3" class="cn.yaolianhua.dependencies.di.example.SimpleBean3"/>
+</beans>

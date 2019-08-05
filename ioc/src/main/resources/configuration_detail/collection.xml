@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="straight-values.xml"/>
+    <bean id="collectionExample" class="cn.yaolianhua.dependencies.configuration_detail.collection.CollectionExample">
+        <constructor-arg name="properties">
+            <props>
+                <prop key="administrator">administrator@example.org</prop>
+                <prop key="support">support@example.org</prop>
+                <prop key="development">development@example.org</prop>
+            </props>
+        </constructor-arg>
+        <constructor-arg name="list">
+            <list>
+                <value>a list element followed by a reference</value>
+                <ref bean="dataSourceExample" />
+            </list>
+        </constructor-arg>
+        <constructor-arg name="map">
+            <map>
+                <entry key="an entry" value="just some string"/>
+                <entry key ="a ref" value-ref="dataSourceExample"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg name="set">
+            <set>
+                <value>just some string</value>
+                <ref bean="dataSourceExample" />
+            </set>
+        </constructor-arg>
+    </bean>
+</beans>

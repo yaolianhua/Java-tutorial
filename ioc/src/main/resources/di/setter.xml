@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  setter 注入-->
+    <bean id="exampleBean2" class="cn.yaolianhua.dependencies.di.setter.ExampleBean2">
+        <property name="simpleBean2" ref="simpleBean2"/>
+        <property name="string" value="2019"/>
+    </bean>
+    <bean id="simpleBean2" class="cn.yaolianhua.dependencies.di.setter.SimpleBean2"/>
+</beans>

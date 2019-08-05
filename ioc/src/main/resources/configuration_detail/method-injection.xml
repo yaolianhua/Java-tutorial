@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="scopeExampleBean" class="cn.yaolianhua.dependencies.configuration_detail.mi.ScopeExampleBean" scope="prototype"/>
+    <!-- 侵入型太强，不推荐使用 -->
+    <!--<bean id="methodInjectionExample" class="cn.yaolianhua.dependencies.configuration_detail.mi.MethodInjectionExample" />-->
+
+    <!-- 推荐方式 -->
+    <bean id="methodInjectionExample" class="cn.yaolianhua.dependencies.configuration_detail.mi.MethodInjectionExample2">
+        <lookup-method name="getScopeExampleBean" bean="scopeExampleBean"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <bean class="cn.yaolianhua.dependencies.annotation.ExampleBean" c:string="ExampleBean string value"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.ExampleBean2" c:string="ExampleBean2 string value"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.ExampleBean3" c:str="ExampleBean3 string value"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.AnnotationAutowiredExample"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.AnnotationRequiredExample"/>
+
+    <bean class="cn.yaolianhua.dependencies.annotation.ExampleBeanImpl" c:string="ExampleBeanImpl string value [primary]" primary="true"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.ExampleBeanImpl2" c:string="ExampleBeanImpl2 string value"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.ExampleBeanImpl3" c:string="ExampleBeanImpl3 string value [qualifier main]">
+        <qualifier value="main"/>
+    </bean>
+    <bean class="cn.yaolianhua.dependencies.annotation.ExampleBeanImpl4" c:string="ExampleBeanImpl4 string value [qualifier action]">
+        <qualifier value="action"/>
+    </bean>
+    <bean name="example5" class="cn.yaolianhua.dependencies.annotation.ExampleBeanImpl5" c:string="ExampleBeanImpl5 string value [resource example5]"/>
+    <!--<bean id="example6" class="cn.yaolianhua.dependencies.annotation.ExampleBeanImpl6" c:string="ExampleBeanImpl6 string value [resource example6]"/>-->
+    <bean class="cn.yaolianhua.dependencies.annotation.AnnotationResourceExample"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.AnnotationPrimaryExample"/>
+    <bean class="cn.yaolianhua.dependencies.annotation.AnnotationQualifierExample"/>
+</beans>

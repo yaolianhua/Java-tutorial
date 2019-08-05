@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 带有p命名空间的XML快捷方式 -->
+    <bean name="john-classic" class="cn.yaolianhua.dependencies.configuration_detail.namespace.Pnamespace">
+        <property name="name" value="John Doe"/>
+        <property name="spouse" ref="jane"/>
+    </bean>
+
+    <bean name="john-modern"
+          class="cn.yaolianhua.dependencies.configuration_detail.namespace.Pnamespace"
+          p:name="John Doe"
+          p:spouse-ref="jane"/>
+
+    <bean name="jane" class="cn.yaolianhua.dependencies.configuration_detail.namespace.Pnamespace">
+        <property name="name" value="Jane Doe"/>
+    </bean>
+
+    <!-- 带有c命名空间的XML快捷方式(名称) -->
+    <bean id="objectBean" class="cn.yaolianhua.dependencies.configuration_detail.namespace.ObjectBean"/>
+    <!--<bean id="cnamespace" class="cn.yaolianhua.dependencies.configuration_detail.namespace.Cnamespace"
+          c:str1="string str"
+          c:num="2019"
+          c:obj-ref="objectBean"/>-->
+
+    <!-- 带有c命名空间的XML快捷方式(索引) -->
+    <bean id="cnamespace2" class="cn.yaolianhua.dependencies.configuration_detail.namespace.Cnamespace"
+          c:_0="string 0"
+          c:_1="2019"
+          c:_2-ref="objectBean"/>
+</beans>

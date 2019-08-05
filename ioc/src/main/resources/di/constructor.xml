@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 构造函数参数解析 -->
+    <bean id="simpleService" class="cn.yaolianhua.dependencies.di.constructor.SimpleService">
+        <constructor-arg ref="simpleBean"/>
+    </bean>
+    <bean id="simpleBean" class="cn.yaolianhua.dependencies.di.constructor.SimpleBean"/>
+
+    <bean id="exampleBean" class="cn.yaolianhua.dependencies.di.constructor.ExampleBean">
+        <!-- 构造函数参数类型匹配 -->
+        <!--<constructor-arg type="int" value="2019"/>-->
+        <!--<constructor-arg type="java.lang.String" value="07-31"/>-->
+
+        <!-- 构造函数参数索引匹配 -->
+        <!--<constructor-arg index="0" value="2019"/>-->
+        <!--<constructor-arg index="1" value="07-31"/>-->
+
+        <!-- 构造函数参数名称匹配 -->
+        <constructor-arg name="str" value="07-31"/>
+        <constructor-arg name="num" value="2019"/>
+    </bean>
+</beans>

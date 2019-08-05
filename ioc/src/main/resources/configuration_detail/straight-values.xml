@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://192.168.80.11:3306/bdpf"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+    <bean id="dataSourceExample" class="cn.yaolianhua.dependencies.configuration_detail.straight_values.DataSourceExample">
+        <constructor-arg ref="dataSource"/>
+    </bean>-->
+
+    <!-- 使用p命名空间进行更简洁的XML配置 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://192.168.80.11:3306/bdpf"
+          p:username="root"
+          p:password="root"/>
+    <bean id="dataSourceExample" class="cn.yaolianhua.dependencies.configuration_detail.straight_values.DataSourceExample">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+</beans>

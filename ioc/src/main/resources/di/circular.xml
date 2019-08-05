@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 构造器注入会抛出 BeanCurrentlyInCreationException-->
+    <!--<bean id="exampleBean5" class="cn.yaolianhua.dependencies.circular.ExampleBean5">-->
+        <!--<constructor-arg ref="exampleBean4"/>-->
+    <!--</bean>-->
+    <!--<bean id="exampleBean4" class="cn.yaolianhua.dependencies.circular.ExampleBean4">-->
+        <!--<constructor-arg ref="exampleBean5"/>-->
+    <!--</bean>-->
+
+    <!-- setter 注入-->
+    <bean id="circularBean2" class="cn.yaolianhua.dependencies.di.circular.CircularBean2">
+        <property name="bean1" ref="circularBean1"/>
+    </bean>
+    <bean id="circularBean1" class="cn.yaolianhua.dependencies.di.circular.CircularBean1">
+        <property name="bean2" ref="circularBean2"/>
+    </bean>
+</beans>
