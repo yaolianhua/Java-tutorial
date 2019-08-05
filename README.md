@@ -2,7 +2,9 @@
 
 ------------
 [Spring IoC容器和Bean简介](#Spring IoC容器和Bean简介)
+
 [配置元数据的三种方式](#配置元数据的三种方式)
+
 [Dependencies](#Dependencies)
    -  [DI（Dependency Injection）](#DI（Dependency Injection）)
    -  [Dependencies and Configuration in Detail](#Dependencies and Configuration in Detail)
@@ -18,7 +20,7 @@
    - [ApplicationContextAware and BeanNameAware](#ApplicationContextAware and BeanNameAware)
    - [Other Aware Interfaces](#Other Aware Interfaces)
 
-[IoC 扩展点](#IoC 扩展点)
+[IoC 扩展点](#IoC-扩展点)
    - [BeanPostProcessor](#BeanPostProcessor)
    - [BeanFactoryPostProcessor](#BeanFactoryPostProcessor)
 
