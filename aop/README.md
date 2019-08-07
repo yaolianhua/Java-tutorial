@@ -11,8 +11,8 @@
 
 [基于xml的支持](#基于xml的支持)
 [如何选择](#如何选择)
-   - [Spring AOP还是Full AspectJ](#Spring AOP还是Full AspectJ)
-   - [AspectJ注解或XML for Spring AOP](#AspectJ注解或XML for Spring AOP)
+   - [Spring AOP还是Full AspectJ](#Spring-AOP还是Full-AspectJ)
+   - [AspectJ注解或XML for Spring AOP](#AspectJ注解或XML-for-Spring-AOP)
 
 [代理机制](#代理机制)
    - [了解Aop代理](#了解Aop代理)
