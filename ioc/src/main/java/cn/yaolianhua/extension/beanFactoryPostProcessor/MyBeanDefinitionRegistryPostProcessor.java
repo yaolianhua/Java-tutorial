@@ -11,21 +11,21 @@ import org.springframework.stereotype.Component;
  * @date 2019-08-16 15:33
  **/
 @Component
-public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor {
+public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor{
     public MyBeanDefinitionRegistryPostProcessor() {
-//        System.out.println(this.getClass().getSimpleName() + " init");
+        System.out.println(this.getClass().getSimpleName() + " init");
     }
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-//        System.out.println(getClass().getSimpleName() + " postProcessBeanDefinitionRegistry()" );
-//        for (String definitionName : registry.getBeanDefinitionNames()) {
-//            System.out.println(definitionName);
-//        }
+        System.out.println(getClass().getSimpleName() + " postProcessBeanDefinitionRegistry()" );
+        for (String definitionName : registry.getBeanDefinitionNames()) {
+            System.out.println(definitionName);
+        }
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-//        System.out.println(getClass().getSimpleName() + " postProcessBeanFactory()");
+        System.out.println(getClass().getSimpleName() + " postProcessBeanFactory()");
     }
 }

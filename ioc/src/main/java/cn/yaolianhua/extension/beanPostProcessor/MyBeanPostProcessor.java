@@ -23,9 +23,20 @@ public class MyBeanPostProcessor implements InstantiationAwareBeanPostProcessor,
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
 
+//        if (proxy != null && beanName.startsWith("service"))
+//        {
+//            ProxyCreator proxyCreator = proxy ? new MyJdkProxyCreator(beanClass) : new MyCglibProxyCreator(beanClass);
+//            return proxyCreator.createProxy();
+//        }
+        return null;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+
         if (proxy != null && beanName.startsWith("service"))
         {
-            ProxyCreator proxyCreator = proxy ? new MyJdkProxyCreator(beanClass) : new MyCglibProxyCreator(beanClass);
+            ProxyCreator proxyCreator = proxy ? new MyJdkProxyCreator(bean.getClass()) : new MyCglibProxyCreator(bean.getClass());
             return proxyCreator.createProxy();
         }
         return null;

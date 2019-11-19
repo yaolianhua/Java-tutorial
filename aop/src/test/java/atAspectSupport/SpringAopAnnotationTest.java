@@ -19,10 +19,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class SpringAopAnnotationTest {
 
     public static void main(String[] args) {
-//        aspect();
-        noProxy();
-        proxy();
-        exposeProxy();
+        aspect();
+//        noProxy();
+//        proxy();
+//        exposeProxy();
     }
 
     private static void diTest(){
@@ -35,7 +35,7 @@ public class SpringAopAnnotationTest {
         DaoInterface daoInterface = ac.getBean(DaoInterface.class);
         daoInterface.select(1);
         System.out.println(" ----------------------------------------------- ");
-        ac.getBean(ServiceInterface.class).update(5,new Person(0,"none",29));
+//        ac.getBean(ServiceInterface.class).update(5,new Person(0,"none",29));
     }
 
     private static void noProxy(){
