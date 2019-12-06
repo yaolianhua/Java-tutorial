@@ -24,13 +24,12 @@
 hs_err_pid*
 
 .DS_Store
-.idea/compiler.xml
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/sonarlint/
-.idea/uiDesigner.xml
-.idea/vcs.xml
-.idea/workspace.xml
+.idea/*
 aop/target/
 ioc/target/
 spring.iml
+aop/src/main/java/cn/yaolianhua/xml/
+aop/src/main/resources/
+web-flux/target/classes/application.yml
+web-flux/target/generated-sources/
+web-flux/target/generated-test-sources/
