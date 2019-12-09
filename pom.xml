@@ -12,6 +12,7 @@
         <module>ioc</module>
         <module>aop</module>
         <module>web-flux</module>
+        <module>reactor</module>
     </modules>
 
     <properties>

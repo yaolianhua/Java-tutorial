@@ -28,8 +28,5 @@ hs_err_pid*
 aop/target/
 ioc/target/
 spring.iml
-aop/src/main/java/cn/yaolianhua/xml/
-aop/src/main/resources/
-web-flux/target/classes/application.yml
-web-flux/target/generated-sources/
-web-flux/target/generated-test-sources/
+web-flux/target/
+reactor/target/
