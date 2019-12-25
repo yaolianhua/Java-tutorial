@@ -13,6 +13,7 @@
         <module>aop</module>
         <module>web-flux</module>
         <module>reactor</module>
+        <module>distributed</module>
     </modules>
 
     <properties>
