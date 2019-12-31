@@ -25,9 +25,9 @@ hs_err_pid*
 
 .DS_Store
 .idea/*
-aop/target/
 ioc/target/
 web-flux/target/
 reactor/target/
 distributed/target/
+aop/target/
 *.iml
