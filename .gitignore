@@ -27,6 +27,6 @@ hs_err_pid*
 .idea/*
 aop/target/
 ioc/target/
-spring.iml
 web-flux/target/
 reactor/target/
+distributed/target/
