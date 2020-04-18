@@ -14,6 +14,8 @@
         <module>web-flux</module>
         <module>reactor</module>
         <module>distributed</module>
+        <module>se</module>
+        <module>netty</module>
     </modules>
 
     <properties>
