@@ -16,6 +16,7 @@
         <module>distributed</module>
         <module>se</module>
         <module>netty</module>
+        <module>third-party-service</module>
     </modules>
 
     <properties>
