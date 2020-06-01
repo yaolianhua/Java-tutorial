@@ -3,6 +3,7 @@ package cn.yaolianhua.github.login;
 import cn.yaolianhua.common.config.IAuthConfig;
 import me.zhyd.oauth.config.AuthConfig;
 import me.zhyd.oauth.model.AuthCallback;
+import me.zhyd.oauth.model.AuthResponse;
 import me.zhyd.oauth.request.AuthGithubRequest;
 import me.zhyd.oauth.request.AuthRequest;
 import me.zhyd.oauth.utils.AuthStateUtils;
@@ -32,15 +33,16 @@ public class OauthController {
 
     private AuthRequest getAuthRequest() {
         return new AuthGithubRequest(AuthConfig.builder()
-                .clientId("e30a1885d607872bd340")
-                .clientSecret("f3fbd9760ea56f1650361b2f1fb29114969e71dd")
+                .clientId("")
+                .clientSecret("")
                 .redirectUri("http://localhost:8080/github/oauth/authorize")
                 .build());
     }
     @GetMapping("/oauth/authorize")
     @ResponseBody
-    public Object index(){
-        return "success index";
+    public Object index(AuthCallback callback){
+        System.out.println(callback);
+        return getAuthRequest().login(callback);
     }
     @GetMapping("/loginPage")
     public Object loginPage(){
