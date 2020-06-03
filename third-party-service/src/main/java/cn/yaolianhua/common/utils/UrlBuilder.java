@@ -28,6 +28,6 @@ public class UrlBuilder {
     public String build(){
         List<String> paramList = new ArrayList<>();
         params.forEach((k,v) -> paramList.add(k + "=" + v));
-        return String.join("&",paramList);
+        return baseUrl + "?" + String.join("&",paramList);
     }
 }

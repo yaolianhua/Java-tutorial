@@ -3,7 +3,11 @@ package cn.yaolianhua.common.utils;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class HttpUtil {
     private static final Http proxy;
@@ -16,6 +20,23 @@ public class HttpUtil {
     }
     public static String get(String url) throws IOException {
         return proxy.get(url);
+    }
+
+    public static Map<String, String> parseUrlParam(String urlParam){
+        //access_token=811ba122f1db69810eb73dd1fc1c013c49&scope=&token_type=bearer
+        Map<String, String> paramMap = new HashMap<>(7);
+        Pattern.compile("&")
+                .splitAsStream(urlParam)
+                .collect(Collectors.toList())
+                .stream()
+                .map(p -> {
+                    final String[] kvs = p.split("=");
+                    if (kvs.length == 1)
+                        return new String[]{kvs[0],""};
+                    return kvs;
+                })
+                .forEach(split -> paramMap.put(split[0], split[1]));
+        return paramMap;
     }
 }
 interface Http{

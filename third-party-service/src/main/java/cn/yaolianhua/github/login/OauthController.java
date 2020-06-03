@@ -1,17 +1,14 @@
 package cn.yaolianhua.github.login;
 
 import cn.yaolianhua.common.config.IAuthConfig;
-import me.zhyd.oauth.config.AuthConfig;
-import me.zhyd.oauth.model.AuthCallback;
-import me.zhyd.oauth.model.AuthResponse;
-import me.zhyd.oauth.request.AuthGithubRequest;
-import me.zhyd.oauth.request.AuthRequest;
-import me.zhyd.oauth.utils.AuthStateUtils;
+import cn.yaolianhua.common.model.IAuthCallback;
+import cn.yaolianhua.common.request.GithubRequest;
+import cn.yaolianhua.common.request.IAuthRequest;
+import cn.yaolianhua.common.utils.StringTools;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -21,26 +18,26 @@ import java.io.IOException;
 public class OauthController {
     @RequestMapping("/render")
     public void renderAuth(HttpServletResponse response) throws IOException {
-        AuthRequest authRequest = getAuthRequest();
-        response.sendRedirect(authRequest.authorize(AuthStateUtils.createState()));
+        IAuthRequest authRequest = getAuthRequest();
+        response.sendRedirect(authRequest.authorize(StringTools.getUUID()));
     }
 
     @RequestMapping("/callback")
-    public Object login(AuthCallback callback) {
-        AuthRequest authRequest = getAuthRequest();
+    public Object login(IAuthCallback callback) {
+        IAuthRequest authRequest = getAuthRequest();
         return authRequest.login(callback);
     }
 
-    private AuthRequest getAuthRequest() {
-        return new AuthGithubRequest(AuthConfig.builder()
+    private IAuthRequest getAuthRequest() {
+        return new GithubRequest(IAuthConfig.builder()
                 .clientId("")
                 .clientSecret("")
-                .redirectUri("http://localhost:8080/github/oauth/authorize")
+                .redirectUri("")
                 .build());
     }
     @GetMapping("/oauth/authorize")
     @ResponseBody
-    public Object index(AuthCallback callback){
+    public Object index(IAuthCallback callback){
         System.out.println(callback);
         return getAuthRequest().login(callback);
     }

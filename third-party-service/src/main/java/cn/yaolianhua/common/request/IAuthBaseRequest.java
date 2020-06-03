@@ -41,10 +41,10 @@ public abstract class IAuthBaseRequest implements IAuthRequest{
     @Override
     public String authorize(String state) {
         return UrlBuilder.baseUrl(authBase.authorize())
+                .param("response_type","code")
                 .param("client_id",config.getClientId())
                 .param("redirect_uri",config.getRedirectUri())
                 .param("state", getState(state))
-                .param("response_type","code")
                 .build();
     }
     protected String accessTokenUrl(String code){
@@ -72,7 +72,14 @@ public abstract class IAuthBaseRequest implements IAuthRequest{
         try {
             return HttpUtil.post(accessTokenUrl(code),"");
         } catch (IOException e) {
-            return "";
+            return null;
+        }
+    }
+    protected String doGetUser(String token){
+        try {
+            return HttpUtil.get(userInfoUrl(token));
+        } catch (IOException e) {
+            return null;
         }
     }
 }
