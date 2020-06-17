@@ -1,0 +1,13 @@
+spring:
+  rabbitmq:
+    addresses: app.com:5672
+    username: rabbitmq
+    password: rabbitmq
+
+logging:
+  level:
+    org: ERROR
+
+rabbitmq:
+  client:
+    duration: 10000
