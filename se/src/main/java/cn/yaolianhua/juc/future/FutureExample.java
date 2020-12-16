@@ -1,5 +1,7 @@
 package cn.yaolianhua.juc.future;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -15,20 +17,10 @@ import static java.lang.Thread.sleep;
 public class FutureExample {
 
 
-    private static final Worker worker = new Worker(2000);
-    //run it one by one
-    public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
+    public final Worker worker = new Worker(2000);
 
-//            futureAndCallable();
-            futureIsDone();
-//            futureCancel();
-//            futureGetTimeout();
-//        invokeAll();
-//        invokeAny();
-    }
-
-
-    private static void invokeAll() throws InterruptedException, ExecutionException {
+    @Test
+    public void invokeAll() throws InterruptedException, ExecutionException {
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
         List<Callable<String>> workers = new ArrayList<>();
         IntStream.range(0,3).forEach(i -> workers.add(new Worker((i + 1) * 1000)));
@@ -40,7 +32,8 @@ public class FutureExample {
         threadPool.shutdown();
     }
 
-    private static void invokeAny() throws InterruptedException, ExecutionException {
+    @Test
+    public void invokeAny() throws InterruptedException, ExecutionException {
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
         List<Callable<String>> workers = new ArrayList<>();
         IntStream.range(0,3).forEach(i -> workers.add(new Worker((i + 1) * 1000)));
@@ -52,7 +45,8 @@ public class FutureExample {
         threadPool.shutdown();
     }
 
-    private static void futureAndCallable() throws ExecutionException, InterruptedException {
+    @Test
+    public void futureAndCallable() throws ExecutionException, InterruptedException {
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<String> future = executor.submit(worker);
@@ -62,24 +56,26 @@ public class FutureExample {
         executor.shutdown();
     }
 
-    private static void futureGetTimeout() throws ExecutionException {
+    @Test
+    public void futureGetTimeout() throws ExecutionException {
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<String> future = executor.submit(worker);
         System.out.println("Do something else while callable getting execute");
+
         try {
             System.out.println("getting result " + future.get(1, TimeUnit.SECONDS));// Future.get() blocks until the result is available
-        } catch (InterruptedException | TimeoutException e) {
-            e.printStackTrace();
-            Thread.currentThread().interrupt();
-        }finally {
-
-            executor.shutdown();
+        } catch (InterruptedException e) {
+            //
+        } catch (TimeoutException e) {
+            System.out.println("Future get has been timeout");
         }
+
 
     }
 
-    private static void futureIsDone() throws ExecutionException, InterruptedException {
+    @Test
+    public void futureIsDone() throws ExecutionException, InterruptedException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<String> future = executor.submit(worker);
         while (!future.isDone()){
@@ -94,7 +90,8 @@ public class FutureExample {
 
     }
 
-    private static void futureCancel() throws ExecutionException, InterruptedException {
+    @Test
+    public void futureCancel() throws InterruptedException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<String> future = executor.submit(worker);
         AtomicInteger count = new AtomicInteger(0);
@@ -108,13 +105,12 @@ public class FutureExample {
         System.out.println("Task is done");
         try {
             System.out.println("getting result " + future.get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            Thread.currentThread().interrupt();
-        }finally {
-
-            executor.shutdown();
+        } catch (ExecutionException e) {
+            //
+        } catch (CancellationException ce){
+            System.out.println("Future has been canceled");
         }
+
     }
 
 
